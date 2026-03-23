@@ -9,9 +9,10 @@
 
 declare(strict_types=1);
 
-namespace Respect\StringFormatter\Mixin;
+namespace Respect\StringFormatter\Mixins;
 
 use Respect\StringFormatter\Formatter;
+use Respect\StringFormatter\Modifier;
 
 interface Chain extends Formatter
 {
@@ -35,23 +36,19 @@ interface Chain extends Formatter
 
     public function metric(string $unit): Chain;
 
-    public function number(
-        int $decimals = 0,
-        string $decimalSeparator = '.',
-        string $thousandsSeparator = ',',
-    ): Chain;
+    public function number(int $decimals = 0, string $decimalSeparator = '.', string $thousandsSeparator = ','): Chain;
 
     public function pattern(string $pattern): Chain;
 
     /** @param array<string, mixed> $parameters */
-    public function placeholder(array $parameters): Chain;
+    public function placeholder(array $parameters, Modifier|null $modifier = null): Chain;
 
     public function secureCreditCard(string $maskChar = '*'): Chain;
 
     public function time(string $unit): Chain;
 
     /** @param 'both'|'left'|'right' $side */
-    public function trim(string $side, string|null $characters): Chain;
+    public function trim(string $side = 'both', string|null $characters = null): Chain;
 
     public function uppercase(): Chain;
 }

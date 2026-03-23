@@ -15,4 +15,10 @@
     <file>tests/</file>
 
     <rule ref="Respect" />
+    
+    <!-- Exclusions -->
+    <rule ref="Generic.Files.LineLength.TooLong">
+        <exclude-pattern>src/Mixins/</exclude-pattern>
+        <exclude-pattern>tests/feature/</exclude-pattern>
+    </rule>
 </ruleset>

@@ -1,0 +1,22 @@
+#!/usr/bin/env php
+<?php
+
+/*
+ * SPDX-FileCopyrightText: (c) Respect Project Contributors
+ * SPDX-License-Identifier: ISC
+ * SPDX-FileContributor: Alexandre Gomes Gaigalas <alganet@gmail.com>
+ */
+
+declare(strict_types=1);
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use Respect\StringFormatter\DevTools\Commands\LintMixinCommand;
+use Symfony\Component\Console\Application;
+
+return (static function () {
+    $application = new Application('Respect/StringFormatter', '1.0');
+    $application->addCommand(new LintMixinCommand());
+
+    return $application->run();
+})();

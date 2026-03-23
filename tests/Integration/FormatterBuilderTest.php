@@ -4,6 +4,7 @@
  * SPDX-FileCopyrightText: (c) Respect Project Contributors
  * SPDX-License-Identifier: ISC
  * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
+ * SPDX-FileContributor: Alexandre Gomes Gaigalas <alganet@gmail.com>
  */
 
 declare(strict_types=1);
@@ -11,11 +12,10 @@ declare(strict_types=1);
 namespace Respect\StringFormatter\Test\Integration;
 
 use ArgumentCountError;
-use Error;
+use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use ReflectionException;
 use Respect\StringFormatter\FormatterBuilder;
 use Respect\StringFormatter\InvalidFormatterException;
 use Respect\StringFormatter\MaskFormatter;
@@ -163,8 +163,7 @@ final class FormatterBuilderTest extends TestCase
     {
         $builder = new FormatterBuilder();
 
-        $this->expectException(Error::class);
-        $this->expectExceptionMessage('Cannot instantiate interface Respect\StringFormatter\Formatter');
+        $this->expectException(InvalidArgumentException::class);
 
         $builder->__call('', []);
     }
@@ -189,8 +188,7 @@ final class FormatterBuilderTest extends TestCase
     {
         $builder = new FormatterBuilder();
 
-        $this->expectException(ReflectionException::class);
-        $this->expectExceptionMessage('Class "Respect\StringFormatter\NonexistentFormatter" does not exist');
+        $this->expectException(InvalidArgumentException::class);
 
         /** @phpstan-ignore method.notFound */
         $builder->nonexistent();

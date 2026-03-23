@@ -4,6 +4,7 @@
     "description": "A powerful and flexible way of formatting and transforming strings",
     "require": {
         "php": "^8.5",
+        "respect/fluent": "^1.0",
         "respect/stringifier": "^3.0",
         "symfony/polyfill-mbstring": "^1.33",
         "symfony/translation-contracts": "^3.6"
@@ -17,7 +18,9 @@
         "phpstan/phpstan-deprecation-rules": "^2.0",
         "phpstan/phpstan-phpunit": "^2.0",
         "phpunit/phpunit": "^12.5",
+        "respect/fluentgen": "^1.0",
         "respect/coding-standard": "^5.0",
+        "symfony/console": "^6.0|^7.0",
         "symfony/translation": "^6.0|^7.0"
     },
     "license": "ISC",
@@ -30,6 +33,7 @@
     "autoload-dev": {
         "psr-4": {
             "Respect\\StringFormatter\\": ["docs/contributing/templates/php/src"],
+            "Respect\\StringFormatter\\DevTools\\": "src-dev/",
             "Respect\\StringFormatter\\Test\\": ["tests/", "docs/contributing/templates/php/tests"]
         }
     },

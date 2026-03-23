@@ -197,7 +197,7 @@ final class CompiledPattern
         }
 
         preg_match('/^\{(\d*)(?:,(\d*))?\}$/', $token, $m);
-        $max = $m[2] ?? $m[1];
+        $max = $m[2] ?? $m[1] ?? '';
 
         return self::$compiledQualifiers[$token] = $max === '' ? '*' : sprintf('{0,%s}', $max);
     }
